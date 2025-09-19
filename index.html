@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verb "To Be" with Asyl🤍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Subtle Accents -->
+    <!-- Application Structure Plan: The application uses a single-page, vertical-scrolling layout divided into four logical sections: Introduction, Lesson, Practice, and Creative Challenge. This structure mirrors a natural learning flow, starting with explanation and progressing to application. The 'Lesson' section uses an interactive tab system (Positive, Negative, Question) to focus the user's attention on one grammatical concept at a time. The 'Practice' section provides immediate feedback on user input, a crucial element for effective learning. This interactive, section-based design was chosen to transform the static worksheet into an engaging, self-correcting educational tool that is more intuitive and effective for a teenage learner. -->
+    <!-- Visualization & Content Choices: Report Info: Grammar Rules -> Goal: Inform -> Presentation: Interactive Tabs (HTML/JS) -> Interaction: Click to switch views -> Justification: Organizes information cleanly, prevents cognitive overload. Report Info: Fill-in-blanks/Correct-mistakes -> Goal: Assess -> Presentation: Input fields with validation -> Interaction: User types, clicks 'Check', gets color-coded feedback -> Justification: Provides instant reinforcement. Report Info: Q&A -> Goal: Practice -> Presentation: Question with buttons -> Interaction: Click reveals correct answer -> Justification: Simulates conversation. Report Info: Creative Writing -> Goal: Apply -> Presentation: Textareas -> Interaction: Free text entry -> Justification: Encourages creative application. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-active {
+            background-color: #FB7185;
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #E5E7EB;
+            color: #4B5563;
+        }
+        .task-input {
+            transition: border-color 0.3s;
+        }
+        .correct-answer {
+            border-color: #22C55E;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+        }
+        .incorrect-answer {
+            border-color: #EF4444;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-rose-50 text-slate-800">
+
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-rose-800">🎶 A Fun Grammar Workout with Asyl! 🏐✈️</h1>
+        </header>
+
+        <!-- Introduction -->
+        <section class="bg-white p-6 rounded-xl shadow-md mb-8">
+            <p class="text-lg text-center">Hi Asyl! Are you ready to learn all about the verb <strong>to be</strong>? It's one of the most important verbs in English, and it's super easy to use once you know the rules. "To be" is a "state of being" verb. It tells us who someone is, what they are feeling, or where they are.</p>
+        </section>
+
+        <!-- Part 1: The Forms of "To Be" -->
+        <section id="lesson" class="bg-white p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-2xl font-bold text-center text-rose-700 mb-6">Part 1: The Forms of "To Be"</h2>
+            
+            <div class="flex justify-center space-x-2 mb-6">
+                <button id="tab-positive" class="tab-btn tab-active px-4 py-2 rounded-full font-semibold transition-colors duration-300">Positive</button>
+                <button id="tab-negative" class="tab-btn tab-inactive px-4 py-2 rounded-full font-semibold transition-colors duration-300">Negative</button>
+                <button id="tab-question" class="tab-btn tab-inactive px-4 py-2 rounded-full font-semibold transition-colors duration-300">Question</button>
+            </div>
+
+            <div id="content-positive" class="tab-content">
+                <h3 class="text-xl font-semibold mb-3 text-rose-600">Positive Forms (+)</h3>
+                <p class="mb-4">This is how you say something <strong>is</strong> true. You can also use short forms, called <strong>contractions</strong> (like "I'm" or "She's"), to sound more natural!</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-rose-100">
+                            <tr>
+                                <th class="p-3 border-b-2 border-rose-200">Subject</th>
+                                <th class="p-3 border-b-2 border-rose-200">Verb</th>
+                                <th class="p-3 border-b-2 border-rose-200">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="p-3 border-b border-rose-200 font-medium">I</td><td class="p-3 border-b border-rose-200 font-bold">am / 'm</td><td class="p-3 border-b border-rose-200">I <strong>am</strong> a volleyball player. 🏐</td></tr>
+                            <tr><td class="p-3 border-b border-rose-200 font-medium">He, She, It</td><td class="p-3 border-b border-rose-200 font-bold">is / 's</td><td class="p-3 border-b border-rose-200">My favorite song <strong>is</strong> "Lovesong." 🎶</td></tr>
+                            <tr><td class="p-3 border-b border-rose-200 font-medium">You, We, They</td><td class="p-3 border-b border-rose-200 font-bold">are / 're</td><td class="p-3 border-b border-rose-200">We <strong>are</strong> good students.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="content-negative" class="tab-content hidden">
+                <h3 class="text-xl font-semibold mb-3 text-rose-600">Negative Forms (-)</h3>
+                <p class="mb-4">This is how you say something <strong>is not</strong> true. It's easy—just add <strong>not</strong>! The contractions are "isn't" and "aren't."</p>
+                <div class="overflow-x-auto">
+                     <table class="w-full text-left border-collapse">
+                        <thead class="bg-rose-100">
+                            <tr>
+                                <th class="p-3 border-b-2 border-rose-200">Subject</th>
+                                <th class="p-3 border-b-2 border-rose-200">Verb</th>
+                                <th class="p-3 border-b-2 border-rose-200">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="p-3 border-b border-rose-200 font-medium">I</td><td class="p-3 border-b border-rose-200 font-bold">am not</td><td class="p-3 border-b border-rose-200">I <strong>am not</strong> very tall, but I am energetic!</td></tr>
+                            <tr><td class="p-3 border-b border-rose-200 font-medium">He, She, It</td><td class="p-3 border-b border-rose-200 font-bold">is not / isn't</td><td class="p-3 border-b border-rose-200">My drama show <strong>isn't</strong> a comedy.</td></tr>
+                            <tr><td class="p-3 border-b border-rose-200 font-medium">You, We, They</td><td class="p-3 border-b border-rose-200 font-bold">are not / aren't</td><td class="p-3 border-b border-rose-200">We <strong>aren't</strong> tired after practice.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="content-question" class="tab-content hidden">
+                <h3 class="text-xl font-semibold mb-3 text-rose-600">Question Forms (?)</h3>
+                <p class="mb-4">To ask a question, you just switch the verb and the subject.</p>
+                 <div class="overflow-x-auto">
+                     <table class="w-full text-left border-collapse">
+                        <thead class="bg-rose-100">
+                            <tr>
+                                <th class="p-3 border-b-2 border-rose-200">Question</th>
+                                <th class="p-3 border-b-2 border-rose-200">Short Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="p-3 border-b border-rose-200"><strong>Am</strong> I ready for the game?</td><td class="p-3 border-b border-rose-200">Yes, I am. / No, I'm not.</td></tr>
+                            <tr><td class="p-3 border-b border-rose-200"><strong>Is</strong> Italy your dream country? ✈️</td><td class="p-3 border-b border-rose-200">Yes, it is. / No, it isn't.</td></tr>
+                            <tr><td class="p-3 border-b border-rose-200"><strong>Are</strong> you good at volleyball?</td><td class="p-3 border-b border-rose-200">Yes, we are. / No, they aren't.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 2: Practice Time! -->
+        <section id="practice" class="space-y-8">
+            <h2 class="text-2xl font-bold text-center text-rose-700 mb-6">Part 2: Practice Time!</h2>
+
+            <!-- Task 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Task 1: Fill in the Blanks</h3>
+                <p class="mb-4 text-slate-600">Fill in the blanks with <strong>am</strong>, <strong>is</strong>, or <strong>are</strong>.</p>
+                <div id="task1-container" class="space-y-3">
+                    <p>1. My favorite sport <input type="text" data-answer="is" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> volleyball.</p>
+                    <p>2. My best friends <input type="text" data-answer="are" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> always with me.</p>
+                    <p>3. I <input type="text" data-answer="am" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> a student who loves to learn!</p>
+                    <p>4. My team <input type="text" data-answer="is" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> very excited for the next game.</p>
+                    <p>5. Adele’s "Lovesong" <input type="text" data-answer="is" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> on my playlist.</p>
+                    <p>6. Italy <input type="text" data-answer="is" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> a beautiful country.</p>
+                </div>
+                <button id="check-task1" class="mt-4 px-5 py-2 bg-rose-500 text-white font-semibold rounded-lg hover:bg-rose-600 transition-colors">Check Answers</button>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Task 2: Correct the Mistakes</h3>
+                <p class="mb-4 text-slate-600">These sentences have mistakes. Can you fix them?</p>
+                <div id="task2-container" class="space-y-3">
+                    <p>1. My volleyball uniform is blue and white, and my shoes <input type="text" value="is" data-answer="are" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> new.</p>
+                    <p>2. The main character in the drama <input type="text" value="are" data-answer="is" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> so cool.</p>
+                    <p>3. My parents <input type="text" value="am" data-answer="are" class="task-input w-16 mx-1 p-1 text-center border-2 border-slate-300 rounded-md"> proud of my good grades.</p>
+                </div>
+                <button id="check-task2" class="mt-4 px-5 py-2 bg-rose-500 text-white font-semibold rounded-lg hover:bg-rose-600 transition-colors">Check Answers</button>
+            </div>
+            
+             <!-- Task 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Task 3: Write Your Own Sentences</h3>
+                 <p class="mb-4 text-slate-600">Write 3-4 sentences about yourself. Use <strong>am</strong>, <strong>is</strong>, or <strong>are</strong> in each one.</p>
+                <textarea class="w-full h-28 p-2 border-2 border-slate-300 rounded-md focus:ring-2 focus:ring-rose-300 focus:border-rose-300" placeholder="1. I am...&#10;2. My hobby is...&#10;3. My friends are..."></textarea>
+            </div>
+
+             <!-- Task 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Task 4: Mini Role-Play</h3>
+                 <p class="mb-4 text-slate-600">Read the questions and give a short answer like "Yes, I am," or "No, I'm not."</p>
+                 <div class="space-y-4">
+                     <div>
+                        <p class="font-medium">1. Are you a good student?</p>
+                        <p class="text-rose-600 font-semibold h-6" id="answer4-1"></p>
+                     </div>
+                     <div>
+                        <p class="font-medium">2. Is volleyball your favorite sport?</p>
+                        <p class="text-rose-600 font-semibold h-6" id="answer4-2"></p>
+                     </div>
+                     <div>
+                        <p class="font-medium">3. Is your favorite singer Adele?</p>
+                        <p class="text-rose-600 font-semibold h-6" id="answer4-3"></p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Part 3: Creative Challenge! -->
+        <section id="creative" class="mt-8">
+            <h2 class="text-2xl font-bold text-center text-rose-700 mb-6">Part 3: Creative Challenge!</h2>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Write a Short Bio</h3>
+                <p class="mb-2 text-slate-600">Imagine you are writing a bio for your Instagram page. Use what you've learned about the verb <strong>to be</strong>.</p>
+                <div class="bg-rose-100 p-3 rounded-lg text-slate-700 mb-4">
+                    <p class="font-semibold">Example:</p>
+                    <p>I <strong>am</strong> Asyl.<br>I <strong>am</strong> from Darkhan.<br>I <strong>am</strong> short but confident.<br>My dream <strong>is</strong> Italy. ✈️</p>
+                </div>
+                <textarea class="w-full h-32 p-2 border-2 border-slate-300 rounded-md focus:ring-2 focus:ring-rose-300 focus:border-rose-300" placeholder="Now it’s your turn! Write your bio here..."></textarea>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-10 py-6">
+            <p class="text-2xl font-bold text-rose-800">Good job! You've completed your English grammar workout. 💯</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.id.replace('tab-', 'content-');
+                    
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('tab-inactive');
+                    });
+                    
+                    tab.classList.remove('tab-inactive');
+                    tab.classList.add('tab-active');
+
+                    contents.forEach(content => {
+                        if (content.id === targetId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            function checkAnswers(containerId) {
+                const container = document.getElementById(containerId);
+                const inputs = container.querySelectorAll('input[data-answer]');
+                inputs.forEach(input => {
+                    const userAnswer = input.value.trim().toLowerCase();
+                    const correctAnswer = input.dataset.answer.toLowerCase();
+                    input.classList.remove('correct-answer', 'incorrect-answer');
+                    if (userAnswer === correctAnswer) {
+                        input.classList.add('correct-answer');
+                    } else {
+                        input.classList.add('incorrect-answer');
+                    }
+                });
+            }
+
+            document.getElementById('check-task1').addEventListener('click', () => checkAnswers('task1-container'));
+            document.getElementById('check-task2').addEventListener('click', () => checkAnswers('task2-container'));
+            
+            const rolePlayAnswers = {
+                'answer4-1': "Your answer could be: Yes, I am! or No, I'm not.",
+                'answer4-2': "Your answer could be: Yes, it is! or No, it isn't.",
+                'answer4-3': "Your answer could be: Yes, she is! or No, she isn't."
+            };
+
+            Object.keys(rolePlayAnswers).forEach(id => {
+                 document.getElementById(id).textContent = rolePlayAnswers[id];
+            });
+        });
+    </script>
+</body>
+</html>
